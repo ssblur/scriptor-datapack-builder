@@ -6,4 +6,4 @@ Currently still in initial development.
 
 ## Building
 
-Build with `npm install`, then build with `npm run build` to build with Vite.
+Install with `npm install`, then build with `npm run build` to build with Vite.
