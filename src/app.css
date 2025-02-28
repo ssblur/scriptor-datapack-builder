@@ -1,0 +1,53 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
+
+button {
+    @apply font-bold py-2 px-3 rounded;
+    cursor: pointer;
+}
+
+button.button-sm {
+    @apply py-1 px-2;
+}
+
+.primary:not(:disabled) {
+    @apply bg-blue-500 text-white;
+}
+
+.primary:not(:disabled):hover {
+    @apply bg-blue-400;
+}
+
+.primary:disabled {
+    @apply bg-gray-400;
+}
+
+.danger {
+    @apply bg-red-500 text-white;
+}
+
+.danger:hover {
+    @apply bg-red-400;
+}
+
+.tab {
+    @apply border-solid border-black border-1 rounded-bl-none rounded-br-none mt-1;
+}
+
+.tab.active {
+    @apply border-b-white;
+    z-index: 100;
+    position: relative;
+}
+
+.tab-container {
+    position: relative;
+    top: -1px;
+    z-index: 0;
+}
+
+.swatch {
+    width: 12px;
+    height: 12px;
+}
