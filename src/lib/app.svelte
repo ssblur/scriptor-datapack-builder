@@ -22,7 +22,7 @@
     let scraps = $state([]);
     let tomes = $state([]);
 
-    let namespace = $state("custom");
+    let namespace = $state("scriptorcustom");
     let description = $state("A custom data pack for Scriptor Magicae");
     let defaultResources = $state(true);
 

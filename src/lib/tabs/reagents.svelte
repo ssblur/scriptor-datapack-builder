@@ -47,7 +47,7 @@
             </div>
             <ItemSearch bind:item={reagents[active].item} />
         {:else}
-            <h2 class="text-xl">Please select or create an reagent.</h2>
+            <h2 class="text-xl">Please select or create a reagent.</h2>
         {/if}
     </div>
 </div>

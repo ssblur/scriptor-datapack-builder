@@ -14,7 +14,7 @@
                 "spells": [
                     {
                         "action": "clear_weather",
-                        "descriptors": []
+                        "descriptors": ["strong"]
                     }
                 ]
             }
