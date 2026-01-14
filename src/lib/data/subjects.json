@@ -1,3 +1,9 @@
 [
-    "self"
+    "self",
+    "touch",
+    "hitscan",
+    "projectile",
+    "rune",
+    "enchant",
+    "meteor"
 ]

@@ -24,7 +24,12 @@
 
     let namespace = $state("scriptorcustom");
     let description = $state("A custom data pack for Scriptor Magicae");
+    let packFormat = $state(48);
     let defaultResources = $state(true);
+
+    function importPack() {
+        // TODO
+    }
 
     function generatePack() {
         const zip = new JSZip();
@@ -33,8 +38,8 @@
         zip.file("pack.mcmeta", JSON.stringify({
             pack: {
                 description,
-                pack_format: 48,
-                supported_formats: [48, 57]
+                pack_format: packFormat,
+                supported_formats: [packFormat, Math.max(packFormat, 57)]
             }
         }));
 
@@ -73,6 +78,7 @@
         <button class="tab {currentTab == "scraps" ? "active": ""}" onclick={() => currentTab = "scraps"}>Spell Scraps</button>
         <button class="tab {currentTab == "tomes" ? "active": ""}" onclick={() => currentTab = "tomes"}>Spell Tomes</button>
         <button class="tab {currentTab == "settings" ? "active": ""}" onclick={() => currentTab = "settings"}>Other Settings</button>
+        <button class="tab {currentTab == "import" ? "active": "primary"}"  onclick={() => currentTab = "import"}>Import</button>
         <button class="tab primary" onclick={generatePack}>Generate</button>
     </div>
     <div class="w-full border px-2 py-4 mb-2 tab-container">
@@ -94,6 +100,11 @@
             <Scraps bind:scraps={scraps} />
         {:else if currentTab == "tomes"}
             <Tomes bind:tomes={tomes} />
+        {:else if currentTab == "import"}
+            <div class="text-lg text-red-700">
+                Pack importing is not currently implemented. 
+                Thank you for your patience!
+            </div>
         {:else if currentTab == "settings"}
             <div class="w-full">
                 <h1 class="text-xl">Other Settings</h1>
@@ -109,9 +120,34 @@
                 </div>
                 <hr class="my-2">
                 <div>
+                    <h2 class="text-l">Description</h2>
+                    <small class="text-sm">
+                        An in-game description for this data pack.
+                        Purely visual.
+                    </small>
+                    <input type="text" class="w-full" bind:value={description}>
+                </div>
+                <hr class="my-2">
+                <div>
+                    <h2 class="text-l">Pack Format</h2>
+                    <small class="text-sm">
+                        The format number for this data pack.
+                        Used by Minecraft to determine whether this pack is compatible
+                        with the current version.
+                        <br>
+                        For Minecraft version 1.21.1, this should be <b>48</b>.
+                    </small>
+                    <input type="number" class="w-full" bind:value={packFormat}>
+                </div>
+                <hr class="my-2">
+                <div>
                     <h2 class="text-l">Enable Default Resources</h2>
                     <small class="text-sm">
-                        Disable this if you don't want to include references to default actions, colors, reagents, and generators.
+                        Disable this if you don't want to include references to default actions, colors, reagents, 
+                        and generators.
+                        <br>
+                        Disabling this will still leave builtin actions, descriptors, and subjects which are not
+                        loaded via data pack accessible!
                     </small>
                     <div>
                         <input id="defaultResources" type="checkbox" class="" bind:checked={defaultResources}>

@@ -38,6 +38,10 @@
         {#if active < (engravings.length)}
             <Disabled bind:disabled={engravings[active].disabled} />
             <div class="px-4">
+                ID (should be unique)
+                <input type="text" bind:value="{engravings[active].id}">
+            </div>
+            <div class="px-4">
                 <p>Spell:</p>
                 <Spell bind:spell={engravings[active].spell} />
             </div>

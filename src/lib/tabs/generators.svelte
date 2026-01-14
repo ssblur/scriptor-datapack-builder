@@ -45,6 +45,7 @@
             id: `generator_${generators.length + 1}`,
             generator: "static_token",
             default: false,
+            disabled: false,
             parameters: {
                 collision_strategy: "FALLBACK"
             },
@@ -144,7 +145,7 @@
                 <button class="primary w-full" onclick={addTokenGroup}>Add Token Group</button>
             </div>
         {:else}
-            <h2 class="text-xl">Please select or create an generator.</h2>
+            <h2 class="text-xl">Please select or create a generator.</h2>
         {/if}
     </div>
 </div>

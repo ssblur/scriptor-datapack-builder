@@ -137,7 +137,7 @@
                 </button>
             </div>
         {:else}
-            <h2 class="text-xl">Please select or create an binding.</h2>
+            <h2 class="text-xl">Please select or create a binding.</h2>
         {/if}
     </div>
 </div>

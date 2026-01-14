@@ -31,7 +31,7 @@
         {#if active < (scraps.length)}
             <Disabled bind:disabled={scraps[active].disabled} />
         {:else}
-            <h2 class="text-xl">Please select or create an scrap.</h2>
+            <h2 class="text-xl">Please select or create a scrap.</h2>
         {/if}
     </div>
 </div>

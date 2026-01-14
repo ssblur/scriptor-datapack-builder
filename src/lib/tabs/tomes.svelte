@@ -42,17 +42,35 @@
     </div>
     <div class="w-3/4 bg-yellow-50 p-1">
         {#if active < (tomes.length)}
-            <Disabled bind:disabled={tomes[active].disabled} />
+            <div class="px-4 text-lg">
+                <Disabled bind:disabled={tomes[active].disabled} />
+            </div>
             <div class="px-4">
-                Spell: 
-                <Spell bind:spell={tomes[active].spell} />
+                <p class="text-lg">ID (must be unique):</p>
+                <input type="text" class="mx-2 w-1/2" bind:value={tomes[active].id}/>
+            </div>
+            <div class="px-4">
+                <p class="text-lg">Name (either direct or a localization key):</p>
+                <input type="text" class="mx-2 w-1/2" bind:value={tomes[active].name}/>
+            </div>
+            <div class="px-4">
+                <p class="text-lg">Author Name:</p>
+                <input type="text" class="mx-2 w-1/2" bind:value={tomes[active].author}/>
+            </div>
+            <div class="px-4">
+                <p class="text-lg">Tome Tier:</p>
+                <input type="number" class="mx-2" bind:value={tomes[active].tier}/>
             </div>
             <div class="px-4">
                 <p class="text-lg">Spellbook:</p>
                 <ItemSearch bind:item={tomes[active].item} items={spellbooks} />
             </div>
+            <div class="px-4">
+                <p class="text-lg">Spell:</p>
+                <Spell bind:spell={tomes[active].spell} />
+            </div>
         {:else}
-            <h2 class="text-xl">Please select or create an tome.</h2>
+            <h2 class="text-xl">Please select or create a tome.</h2>
         {/if}
     </div>
 </div>
