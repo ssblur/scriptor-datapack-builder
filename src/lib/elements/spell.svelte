@@ -55,7 +55,7 @@
     {/if}
 
     {#each spell.spells as partial, index}
-        <div class="pl-2 border-l-1 border-b-1 mb-2 w-full">
+        <div class="pl-2 border-1 odd:bg-gray-100 even:bg-white mb-2 w-full">
             <div class="flex w-full">
                 <div class="p-4 w-1/4 text-lg">
                     <b>Action:</b>
