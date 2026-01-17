@@ -1,6 +1,11 @@
 <script>
-    import subjects from "$lib/data/subjects.json";
-    let { subject = $bindable(""), items } = $props();
+    import json from "$lib/data/subjects.json";
+    import Data from "$lib/data.svelte.js";
+
+    let { namespace } = Data
+
+    let { subject = $bindable(""), items } = $props()
+    let searchable = $derived(json)
     let updating = $state(false)
 
     function searchedItems() {
@@ -16,7 +21,7 @@
     <input type="text" class="w-full p-2" bind:value={subject} oninput={() => updating = true}>
     {#if subject.trim().length > 0 && updating}
         <div class="w-full">
-            {#each (items ?? subjects).filter(value => {
+            {#each (items ?? searchable).filter(value => {
                 return value.startsWith(subject)
             }).slice(0, 10) as row}
                 <button class="odd:bg-gray-100 w-full p-1 text-lg button-sm" onclick={() => {updating = false; subject = row}}>

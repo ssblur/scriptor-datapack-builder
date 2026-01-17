@@ -10,19 +10,9 @@
 	import Reagents from "./tabs/reagents.svelte";
 	import Scraps from "./tabs/scraps.svelte";
 	import Tomes from "./tabs/tomes.svelte";
+    import Data from "./data.svelte.js";
 
     let currentTab = $state("actions");
-    let actions = $state([]);
-    let artifacts = $state([]);
-    let colors = $state([]);
-    let engravings = $state([]);
-    let generators = $state([]);
-    let bindings = $state([]);
-    let reagents = $state([]);
-    let scraps = $state([]);
-    let tomes = $state([]);
-
-    let namespace = $state("scriptorcustom");
     let description = $state("A custom data pack for Scriptor Magicae");
     let packFormat = $state(48);
     let defaultResources = $state(true);
@@ -83,23 +73,23 @@
     </div>
     <div class="w-full border px-2 py-4 mb-2 tab-container">
         {#if currentTab == "actions"}
-            <Actions bind:actions={actions} />
+            <Actions bind:actions={Data.actions} />
         {:else if currentTab == "artifacts"}
-            <Artifacts bind:artifacts={artifacts} />
+            <Artifacts bind:artifacts={Data.artifacts} />
         {:else if currentTab == "colors"}
-            <Colors bind:colors={colors} />
+            <Colors bind:colors={Data.colors} />
         {:else if currentTab == "engravings"}
-            <Engravings bind:engravings={engravings} />
+            <Engravings bind:engravings={Data.engravings} />
         {:else if currentTab == "generators"}
-            <Generators bind:generators={generators} />
+            <Generators bind:generators={Data.generators} />
         {:else if currentTab == "bindings"}
-            <Bindings bind:bindings={bindings} generators={generators} actions={actions} namespace={namespace} />
+            <Bindings bind:bindings={Data.bindings} />
         {:else if currentTab == "reagents"}
-            <Reagents bind:reagents={reagents} />
+            <Reagents bind:reagents={Data.reagents} />
         {:else if currentTab == "scraps"}
-            <Scraps bind:scraps={scraps} />
+            <Scraps bind:scraps={Data.scraps} />
         {:else if currentTab == "tomes"}
-            <Tomes bind:tomes={tomes} />
+            <Tomes bind:tomes={Data.tomes} />
         {:else if currentTab == "import"}
             <div class="text-lg text-red-700">
                 Pack importing is not currently implemented. 
@@ -116,7 +106,7 @@
                         The namespace these resources will be located under.
                         If you don't know what this does, it's usually fine to leave it unchanged.
                     </small>
-                    <input type="text" class="w-full" bind:value={namespace}>
+                    <input type="text" class="w-full" bind:value={Data.namespace}>
                 </div>
                 <hr class="my-2">
                 <div>

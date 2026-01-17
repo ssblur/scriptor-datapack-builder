@@ -1,12 +1,16 @@
 <script>
 	import Disabled from "$lib/elements/disabled.svelte";
 	import ItemSearch from "$lib/elements/item-search.svelte";
+    import Data from "$lib/data.svelte.js";
+
+    let {
+        generators,
+        actions,
+        namespace
+    } = Data
 
     let { 
         bindings = $bindable([]),
-        generators,
-        actions,
-        namespace,
     } = $props();
     let active = $state(0);
     let currentWord = $state("");

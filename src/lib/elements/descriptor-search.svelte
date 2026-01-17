@@ -1,6 +1,13 @@
 <script>
-    import descriptors from "$lib/data/descriptors.json";
+    import json from "$lib/data/descriptors.json";
+    import Data from "$lib/data.svelte.js";
+
+    let { reagents, namespace } = Data
+
     let { descriptor = $bindable(""), items } = $props();
+    let searchable = $derived(json.concat(reagents.map(r => {
+        return `reagent.${namespace}.${r.id}`
+    })))
     let updating = $state(false)
 
     function searchedItems() {
@@ -16,7 +23,7 @@
     <input type="text" class="w-full p-2" bind:value={descriptor} oninput={() => updating = true}>
     {#if descriptor.trim().length > 0 && updating}
         <div class="w-full">
-            {#each (items ?? descriptors).filter(value => {
+            {#each (items ?? searchable).filter(value => {
                 return value.startsWith(descriptor)
             }).slice(0, 10) as row}
                 <button class="odd:bg-gray-100 w-full p-1 text-lg button-sm" onclick={() => {updating = false; descriptor = row}}>
