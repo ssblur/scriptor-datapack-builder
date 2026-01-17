@@ -23,7 +23,7 @@
 
     function generatePack() {
         const zip = new JSZip();
-        const dir = `data/${namespace}/scriptor`;
+        const dir = `data/${Data.namespace}/scriptor`;
 
         zip.file("pack.mcmeta", JSON.stringify({
             pack: {
@@ -40,15 +40,15 @@
             zip.file(`${dir}/${resourceType}/${id}.json`, JSON.stringify(clone));
         }
 
-        actions.forEach(i => directAdd(i, "actions"))
-        artifacts.forEach(i => directAdd(i, "artifacts"))
-        bindings.forEach(i => directAdd(i, "bindings"))
-        colors.forEach(i => directAdd(i, "colors"))
-        engravings.forEach(i => directAdd(i, "engravings"))
-        generators.forEach(i => directAdd(i, "generators"))
-        reagents.forEach(i => directAdd(i, "reagents"))
-        scraps.forEach(i => directAdd(i, "scraps"))
-        tomes.forEach(i => directAdd(i, "tomes"))
+        Data.actions.forEach(i => directAdd(i, "actions"))
+        Data.artifacts.forEach(i => directAdd(i, "artifacts"))
+        Data.bindings.forEach(i => directAdd(i, "bindings"))
+        Data.colors.forEach(i => directAdd(i, "colors"))
+        Data.engravings.forEach(i => directAdd(i, "engravings"))
+        Data.generators.forEach(i => directAdd(i, "generators"))
+        Data.reagents.forEach(i => directAdd(i, "reagents"))
+        Data.scraps.forEach(i => directAdd(i, "scraps"))
+        Data.tomes.forEach(i => directAdd(i, "tomes"))
 
         zip.generateAsync({type: "blob"}).then(file => {
             FileSaver.saveAs(file, "custom-scriptor-pack.zip");
