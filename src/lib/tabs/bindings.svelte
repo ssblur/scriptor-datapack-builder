@@ -2,10 +2,10 @@
 	import Disabled from "$lib/elements/disabled.svelte";
 	import ItemSearch from "$lib/elements/item-search.svelte";
     import Data from "$lib/data.svelte.js";
+	import WordSearch from "$lib/elements/word-search.svelte";
 
     let {
         generators,
-        actions,
         namespace
     } = Data
 
@@ -128,11 +128,7 @@
             </div>
             <div class="py-2">
                 <hr>
-                <ItemSearch 
-                    bind:item={currentWord} 
-                    items={
-                        actions.map(item => item.id.includes(":") ? `action.${item.id.replace(":", ".")}` : `${namespace}:action.${namespace}.${item.id}`)
-                    } />
+                <WordSearch bind:word={currentWord} />
                 <button 
                     disabled={!generators.some(item => item.id == bindings[active].generator || `${namespace}:${item.id}` == bindings[active].generator)} 
                     class="primary m-2 w-full" 
