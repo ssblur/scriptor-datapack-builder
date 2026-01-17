@@ -22,7 +22,7 @@
     {#if subject.trim().length > 0 && updating}
         <div class="w-full">
             {#each (items ?? searchable).filter(value => {
-                return value.startsWith(subject)
+                return value.split(".").some(it => it.startsWith(subject))
             }).slice(0, 10) as row}
                 <button class="odd:bg-gray-100 w-full p-1 text-lg button-sm" onclick={() => {updating = false; subject = row}}>
                     {row}
