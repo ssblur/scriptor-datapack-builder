@@ -30,6 +30,8 @@
     <div class="flex-grow-1 bg-yellow-50 p-1">
         {#if active < (scraps.length)}
             <Disabled bind:disabled={scraps[active].disabled} />
+            <br>
+            <div class="text-lg text-red-600">Scraps aren't implemented in this editor yet, thanks for your patience.</div>
         {:else}
             <h2 class="text-xl">Please select or create a scrap.</h2>
         {/if}
