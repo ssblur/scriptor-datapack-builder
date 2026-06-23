@@ -3,6 +3,7 @@ export let Data = $state({
     artifacts: [],
     colors: [],
     engravings: [],
+    villager_engravings: [],
     generators: [],
     bindings: [],
     reagents: [],

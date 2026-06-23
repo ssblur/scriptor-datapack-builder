@@ -45,6 +45,7 @@
         Data.bindings.forEach(i => directAdd(i, "bindings"))
         Data.colors.forEach(i => directAdd(i, "colors"))
         Data.engravings.forEach(i => directAdd(i, "engravings"))
+        Data.engravings.forEach(i => directAdd(i, "villager_engravings"))
         Data.generators.forEach(i => directAdd(i, "generators"))
         Data.reagents.forEach(i => directAdd(i, "reagents"))
         Data.scraps.forEach(i => directAdd(i, "scraps"))
@@ -62,6 +63,7 @@
         <button class="tab {currentTab == "artifacts" ? "active": ""}" onclick={() => currentTab = "artifacts"}>Artifacts</button>
         <button class="tab {currentTab == "colors" ? "active": ""}" onclick={() => currentTab = "colors"}>Custom Colors</button>
         <button class="tab {currentTab == "engravings" ? "active": ""}" onclick={() => currentTab = "engravings"}>Engravings</button>
+        <button class="tab {currentTab == "villager_engravings" ? "active": ""}" onclick={() => currentTab = "villager_engravings"}>Village Engravings</button>
         <button class="tab {currentTab == "generators" ? "active": ""}" onclick={() => currentTab = "generators"}>Generators</button>
         <button class="tab {currentTab == "bindings" ? "active": ""}" onclick={() => currentTab = "bindings"}>Generator Bindings</button>
         <button class="tab {currentTab == "reagents" ? "active": ""}" onclick={() => currentTab = "reagents"}>Reagents</button>
@@ -80,6 +82,8 @@
             <Colors bind:colors={Data.colors} />
         {:else if currentTab == "engravings"}
             <Engravings bind:engravings={Data.engravings} />
+        {:else if currentTab == "villager_engravings"}
+            <Engravings bind:engravings={Data.villager_engravings} />
         {:else if currentTab == "generators"}
             <Generators bind:generators={Data.generators} />
         {:else if currentTab == "bindings"}
