@@ -3,42 +3,42 @@
 	import ItemSearch from "$lib/elements/item-search.svelte";
 	import StringList from "$lib/elements/string-list.svelte";
 
-    let { scraps = $bindable([]) } = $props();
+    let { notes = $bindable([]) } = $props();
     let active = $state(0);
 
     function addScrap() {
-        scraps = scraps.concat([{
-            id: `scrap_${scraps.length + 1}`,
+        notes = notes.concat([{
+            id: `note_${notes.length + 1}`,
             disabled: false,
             tier: 1,
             keys: [],
         }])
-        active = scraps.length - 1
+        active = notes.length - 1
     }
 </script>
 
 <div class="flex">
     <div class="w-1/4">
-        {#each scraps as scrap, index}
+        {#each notes as scrap, index}
             <button class="w-full px-2 {active == index ? "bg-yellow-100" : "odd:bg-gray-100"}" onclick={() => active = index}>
-                [{ scraps[index].id }]
+                [{ notes[index].id }]
             </button>
         {/each}
         <button class="w-full px-2 odd:bg-gray-100" onclick={addScrap}>
-            + Add New Scraps
+            + Add New Notes
         </button>
     </div>
     <div class="flex-grow-1 bg-yellow-50 p-1">
-        {#if active < (scraps.length)}
-            <Disabled bind:disabled={scraps[active].disabled} />
+        {#if active < (notes.length)}
+            <Disabled bind:disabled={notes[active].disabled} />
             <br/>
-            Tier: <input type="number" bind:value={scraps[active].tier} min="0" max="3"/>
+            Tier: <input type="number" bind:value={notes[active].tier} min="0" max="2"/>
             <br/>
-            Scraps:
+            Notes:
             <br/>
-            <StringList bind:value={scraps[active].keys} />
+            <StringList bind:value={notes[active].keys} />
         {:else}
-            <h2 class="text-xl">Please select or create a set of scraps.</h2>
+            <h2 class="text-xl">Please select or create a set of notes.</h2>
         {/if}
     </div>
 </div>

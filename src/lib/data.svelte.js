@@ -8,6 +8,7 @@ export let Data = $state({
     bindings: [],
     reagents: [],
     scraps: [],
+    notes: [],
     tomes: [],
 
     namespace: "scriptorcustom",

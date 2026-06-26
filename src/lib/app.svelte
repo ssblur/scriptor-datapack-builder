@@ -11,6 +11,7 @@
 	import Scraps from "./tabs/scraps.svelte";
 	import Tomes from "./tabs/tomes.svelte";
     import Data from "./data.svelte.js";
+	import Notes from "./tabs/notes.svelte";
 
     let currentTab = $state("actions");
     let description = $state("A custom data pack for Scriptor Magicae");
@@ -68,6 +69,7 @@
         <button class="tab {currentTab == "bindings" ? "active": ""}" onclick={() => currentTab = "bindings"}>Generator Bindings</button>
         <button class="tab {currentTab == "reagents" ? "active": ""}" onclick={() => currentTab = "reagents"}>Reagents</button>
         <button class="tab {currentTab == "scraps" ? "active": ""}" onclick={() => currentTab = "scraps"}>Spell Scraps</button>
+        <button class="tab {currentTab == "notes" ? "active": ""}" onclick={() => currentTab = "notes"}>Notes</button>
         <button class="tab {currentTab == "tomes" ? "active": ""}" onclick={() => currentTab = "tomes"}>Spell Tomes</button>
         <button class="tab {currentTab == "settings" ? "active": ""}" onclick={() => currentTab = "settings"}>Other Settings</button>
         <button class="tab {currentTab == "import" ? "active": "primary"}"  onclick={() => currentTab = "import"}>Import</button>
@@ -92,6 +94,8 @@
             <Reagents bind:reagents={Data.reagents} />
         {:else if currentTab == "scraps"}
             <Scraps bind:scraps={Data.scraps} />
+        {:else if currentTab == "notes"}
+            <Notes bind:scraps={Data.notes} />
         {:else if currentTab == "tomes"}
             <Tomes bind:tomes={Data.tomes} />
         {:else if currentTab == "import"}
