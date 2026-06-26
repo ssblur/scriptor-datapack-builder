@@ -10,6 +10,7 @@ export let Data = $state({
     scraps: [],
     notes: [],
     tomes: [],
+    mob_spell_items: [],
 
     namespace: "scriptorcustom",
 })

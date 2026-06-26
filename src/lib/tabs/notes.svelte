@@ -32,7 +32,7 @@
         {#if active < (notes.length)}
             <Disabled bind:disabled={notes[active].disabled} />
             <br/>
-            Tier: <input type="number" bind:value={notes[active].tier} min="0" max="2"/>
+            Tier: <input type="number" bind:value={notes[active].tier} min="0" max="2" step="1"/>
             <br/>
             Notes:
             <br/>

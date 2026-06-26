@@ -12,6 +12,7 @@
 	import Tomes from "./tabs/tomes.svelte";
     import Data from "./data.svelte.js";
 	import Notes from "./tabs/notes.svelte";
+	import MobSpellItems from "./tabs/mob_spell_items.svelte";
 
     let currentTab = $state("actions");
     let description = $state("A custom data pack for Scriptor Magicae");
@@ -50,7 +51,9 @@
         Data.generators.forEach(i => directAdd(i, "generators"))
         Data.reagents.forEach(i => directAdd(i, "reagents"))
         Data.scraps.forEach(i => directAdd(i, "scraps"))
+        Data.notes.forEach(i => directAdd(i, "notes"))
         Data.tomes.forEach(i => directAdd(i, "tomes"))
+        Data.mob_spell_items.forEach(i => directAdd(i, "mob_spell_items"))
 
         zip.generateAsync({type: "blob"}).then(file => {
             FileSaver.saveAs(file, "custom-scriptor-pack.zip");
@@ -71,6 +74,7 @@
         <button class="tab {currentTab == "scraps" ? "active": ""}" onclick={() => currentTab = "scraps"}>Spell Scraps</button>
         <button class="tab {currentTab == "notes" ? "active": ""}" onclick={() => currentTab = "notes"}>Notes</button>
         <button class="tab {currentTab == "tomes" ? "active": ""}" onclick={() => currentTab = "tomes"}>Spell Tomes</button>
+        <button class="tab {currentTab == "mob_spell_items" ? "active": ""}" onclick={() => currentTab = "mob_spell_items"}>Spell Items</button>
         <button class="tab {currentTab == "settings" ? "active": ""}" onclick={() => currentTab = "settings"}>Other Settings</button>
         <button class="tab {currentTab == "import" ? "active": "primary"}"  onclick={() => currentTab = "import"}>Import</button>
         <button class="tab primary" onclick={generatePack}>Generate</button>
@@ -98,6 +102,8 @@
             <Notes bind:notes={Data.notes} />
         {:else if currentTab == "tomes"}
             <Tomes bind:tomes={Data.tomes} />
+        {:else if currentTab == "mob_spell_items"}
+            <MobSpellItems bind:items={Data.mob_spell_items} />
         {:else if currentTab == "import"}
             <div class="text-lg text-red-700">
                 Pack importing is not currently implemented. 

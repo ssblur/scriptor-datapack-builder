@@ -32,7 +32,7 @@
         {#if active < (scraps.length)}
             <Disabled bind:disabled={scraps[active].disabled} />
             <br/>
-            Tier: <input type="number" bind:value={scraps[active].tier} min="0" max="3"/>
+            Tier: <input type="number" bind:value={scraps[active].tier} min="0" max="3" step="1"/>
             <br/>
             Scraps:
             <br/>
