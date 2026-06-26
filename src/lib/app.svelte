@@ -95,7 +95,7 @@
         {:else if currentTab == "scraps"}
             <Scraps bind:scraps={Data.scraps} />
         {:else if currentTab == "notes"}
-            <Notes bind:scraps={Data.notes} />
+            <Notes bind:notes={Data.notes} />
         {:else if currentTab == "tomes"}
             <Tomes bind:tomes={Data.tomes} />
         {:else if currentTab == "import"}
