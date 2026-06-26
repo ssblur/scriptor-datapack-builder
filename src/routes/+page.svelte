@@ -1,6 +1,6 @@
 <script>
     import App from "$lib/app.svelte";
-    const scriptorVersion = "v1.4"
+    const scriptorVersion = "v2.0.6"
 </script>
 
 <div class="mt-4">
